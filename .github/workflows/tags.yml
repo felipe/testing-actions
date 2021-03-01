@@ -1,0 +1,14 @@
+name: "tags"
+on: [push]
+
+env:
+  TAGS: ${git describe --abbrev=0 --tags}
+  CURRENT_TAG: ${[ ${#TAGS} -ge 10 ] && echo "0.1.0" || TAGS} 
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+	steps:
+    - name: Current Tag
+	  run: cat ${{ env.CURRENT_TAG }}
+		  
