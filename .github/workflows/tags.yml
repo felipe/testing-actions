@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Current Tag
-      run: cat ${{ env.CURRENT_TAG }}
+      run: cat ${{ env.CURRENT_TAG }} && cat ${{ env.TAGS }}
