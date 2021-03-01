@@ -8,7 +8,7 @@ env:
 jobs:
   print:
     runs-on: ubuntu-latest
-	steps:
+    steps:
     - name: Current Tag
-	  run: cat ${{ env.CURRENT_TAG }}
+      run: cat ${{ env.CURRENT_TAG }}
 		  
