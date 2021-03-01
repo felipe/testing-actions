@@ -2,16 +2,17 @@ name: "tags"
 on: [push]
 
 env:
+  STARTING_TAG: "0.1.0"
   CURRENT_TAG: ${git describe --abbrev=0 --tags --always}
-  TAG_LENGTH: ${#CURRENT_TAG}
+  CURRENT_TAG_LENGTH: ${#CURRENT_TAG}
 
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
     - name: Current Tag
-      if: ${{ env.TAG_LENGTH > '15' }}
+      if: ${{ env.CURRENT_TAG_LENGTH > '15' }}
       run: echo ${{ env.CURRENT_TAG }}
     - name: First Tag
-      if: ${{ env.TAG_LENGTH < '15' }}
-      run: echo "1.0.1"
+      if: ${{ env.CURRENT_TAG_LENGTH < '15' }}
+      run: echo ${{ env.STARTING_TAG }}
