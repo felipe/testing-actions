@@ -13,5 +13,5 @@ jobs:
       if: ${{ env.TAG_LENGTH > '15' }}
       run: echo ${{ env.CURRENT_TAG }}
     - name: First Tag
-      if: ${{ ${#env.TAG_LENGTH} < '15' }}
+      if: ${{ env.TAG_LENGTH < '15' }}
       run: echo "1.0.1"
