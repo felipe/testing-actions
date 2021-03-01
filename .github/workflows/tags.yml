@@ -2,12 +2,15 @@ name: "tags"
 on: [push]
 
 env:
-  TAGS: ${git describe --abbrev=0 --tags}
-  CURRENT_TAG: ${[ ${#TAGS} -ge 10 ] && echo "0.1.0" || echo $TAGS } 
+  CURRENT_TAG: ${git describe --abbrev=0 --tags --always}
 
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
     - name: Current Tag
-      run: cat ${{ env.CURRENT_TAG }} && cat ${{ env.TAGS }}
+      if: ${{ ${#env.CURRENT_TAG} > '15' }}
+      run: echo ${{ env.CURRENT_TAG }}
+    - name: First Tag
+      if: ${{ ${#env.CURRENT_TAG} > '15' }}
+      run: echo "1.0.1"
