@@ -3,7 +3,7 @@ on: [push]
 
 env:
   TAGS: ${git describe --abbrev=0 --tags}
-  CURRENT_TAG: ${[ ${#TAGS} -ge 10 ] && echo "0.1.0" || TAGS} 
+  CURRENT_TAG: ${[ ${#TAGS} -ge 10 ] && echo "0.1.0" || echo $TAGS } 
 
 jobs:
   print:
